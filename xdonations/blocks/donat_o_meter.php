@@ -31,7 +31,6 @@
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
-
 $xdBlockDir = basename ( dirname ( dirname( __FILE__ ) ) );
 xoops_loadLanguage('main', $xdBlockDir);
 
@@ -195,6 +194,7 @@ function b_donations_donatometer_show($options)
     // Display block
     $block['show_don']= $show_don;
     $block['content'] = $var;
+
     return $block;
 }
 
@@ -224,6 +224,6 @@ function b_donations_donatometer_edit($options)
     $form .= "<br />" . _MB_DON_BUTTON_DIMS . ":&nbsp;";
     $form .= _MB_DON_WIDTH . "&nbsp;<input size='4' name='options[4]' type='text' value='".$options[4]."'>";
     $form .= "&nbsp;&nbsp;" . _MB_DON_WIDTH . "&nbsp;<input size='4' name='options[5]' type='text' value='".$options[5]."'>";
+
     return $form;
 }
-?>

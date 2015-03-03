@@ -65,9 +65,9 @@ function xoops_module_install_xyp_base(&$module=NULL)
             $retVal = TRUE;
         }
     }
+
     return $retVal;
 }
-
 
 /************************************************************************
  *
@@ -107,12 +107,10 @@ function update_lg() {
     $sql0 = "INSERT INTO `{$table}` (`name`, `subtype`, `value`, `text`) "
     ."VALUES ('%1\$s', '%2\$s', '%3\$s', '%4\$s')";
 
-
     $sql = "DELETE FROM {$table}";
     $xoopsDB->queryF($sql);
     //echo "{$sql}<br>";
     $t = explode(';', $lstName);
-
 
     for ($h = 0; $h < count($t); $h++){
         //echo "<hr>{$t[$h]}<br>";
@@ -144,7 +142,6 @@ function update_lg() {
 
     }
 
-
 }
 
 eval( 'function xoops_module_install_' . $xypDir . '(&$module=NULL)
@@ -170,4 +167,3 @@ switch($op)
     default:
         break;
 }
-?>

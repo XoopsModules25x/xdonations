@@ -29,4 +29,3 @@ define('_MB_DON_SUBMIT_BUTTON',                  'Valider votre don');
 define('_MB_DON_SURPLUS',                        'Surplus');
 define('_MB_DON_WIDTH',                          'Width');
 define('_MB_DON_z_test',                         'Pour test');
-?>

@@ -15,11 +15,7 @@ define('_AD_DON_ALERTE_URL_FOR_CANCEL',          'Ce n&apos;est pas une URL vali
 define('_AD_DON_AMOUNT',                         'Montant');
 define('_AD_DON_AMOUNT_DEFAULT',                 'S&eacute;lectionez le n&deg; du montant par d&eacute;faul (liste ci-dessous)');
 
-
 define('_AD_DON_BUTTON_URL',                     'https://www.paypal.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif');
-
-
-
 
 define('_AD_DON_CLEAR_LOG',                      'Clear Log');
 define('_AD_DON_CLEAR_THIS_LOG',                 'Are you sure you want to Delete the Transaction Log?');
@@ -185,7 +181,7 @@ define('_AD_DON_T_paypal_url_array',             'choissisez quel IPN PayPal vou
 define('_AD_DON_T_pp_cancel_url_',               'Entrez une URL de la page WEB qui sera appel&eacute; en cas d&apos;annulation de leur don par l&apos;utilisateur.'.'<br />'
 .'paiement. Vous devez utiliser cette fonctionnalit&eacute; si vous avez rempli un &quot;Thank You&quot; URL.'.'<br />'
 .'CONSEIL: Utilisez NukeWrap pour mettre vos utilisateurs dans votre site OSM.');
-define('_AD_DON_T_pp_curr_code_array',			 'Choisissez votre monaie par d&eacute;fault:'.'<br />'
+define('_AD_DON_T_pp_curr_code_array',             'Choisissez votre monaie par d&eacute;fault:'.'<br />'
                                                 .'AUD = Austrailian Dollar'.'<br />'
                                                 .'BRL = Brazilian Real'.'<br />'
                                                 .'CAD = Canadian Dollar'.'<br />'

@@ -31,4 +31,3 @@
 
 include 'header.php';
 redirect_header(XOOPS_URL.'/index.php', 5, _MD_DON_THANK_YOU);
-?>

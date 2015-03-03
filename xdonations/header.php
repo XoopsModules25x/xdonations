@@ -31,4 +31,3 @@
 
 require_once "../../mainfile.php";
 xoops_loadLanguage('main', $xoopsModule->getVar('dirname'));
-?>

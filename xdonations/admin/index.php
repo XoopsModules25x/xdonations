@@ -24,6 +24,6 @@ xoops_cp_header();
 $indexAdmin = new ModuleAdmin();
 
     echo $indexAdmin->addNavigation('index.php');
-	echo $indexAdmin->renderIndex();
+    echo $indexAdmin->renderIndex();
 
 include "admin_footer.php";

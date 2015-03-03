@@ -175,7 +175,7 @@ define('_AD_DON_T_paypal_url_array',             'Please choose which Paypal IPN
 define('_AD_DON_T_pp_cancel_url_',               'Enter a URL here for a web page that users will be taken to when they cancel their'.'<br />'
                                                  .'payment.'.'<br />'
                                                  .' You should use this feature if you have filled in a &quot;Thank You&quot; URL.'.'<br />');
-define('_AD_DON_T_pp_curr_code_array',			 'Choose your default currency:'.'<br />'
+define('_AD_DON_T_pp_curr_code_array',             'Choose your default currency:'.'<br />'
                                                 .'AUD = Austrailian Dollar'.'<br />'
                                                 .'BRL = Brazilian Real'.'<br />'
                                                 .'CAD = Canadian Dollar'.'<br />'
@@ -256,7 +256,7 @@ define('_AD_DON_V_don_amount_7',                 '65');
 define('_AD_DON_V_don_amt_checked_',             '3');
 define('_AD_DON_V_don_button_submit_',           'https://www.paypal.com/en_US/i/btn/x-click-but04.gif');
 define('_AD_DON_V_don_button_top_',              'https://www.paypal.com/en_US/i/btn/x-click-but21.gif');
-define('_AD_DON_V_don_forceadd_',           	  '1');
+define('_AD_DON_V_don_forceadd_',                 '1');
 define('_AD_DON_V_don_name_no_',                 'No - List my donation as from an Anonymous Donor');
 define('_AD_DON_V_don_name_prompt_',             'Do you want your username revealed with your donation?');
 define('_AD_DON_V_don_name_yes_',                'Yes - List me as a Generous Donor');
@@ -319,7 +319,6 @@ define("_AM_DON_ABOUT_MODULE_INFO",              "Module Info");
 define("_AM_DON_ABOUT_AUTHOR_INFO",              "Author Info");
 define("_AM_DON_ABOUT_DESCRIPTION",              "Description: ");
 define("_AD_DON_ACTION",              "Actions");
-
 
 //ModuleAdmin
 define('_AM_MODULEADMIN_MISSING','Error: The ModuleAdmin class is missing. Please install the ModuleAdmin Class (see /docs/readme.txt)');

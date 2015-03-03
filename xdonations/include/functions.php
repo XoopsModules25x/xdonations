@@ -62,6 +62,7 @@ function define_curr($curr)
             $curr_sign = _MD_DON_CURR_USD;
             break;
     }
+
     return $curr_sign;
 }
 
@@ -81,6 +82,7 @@ function configInfo()
     {
         $tr_config[$row['name']] = $row['value'];
     }
+
     return $tr_config;
 }
 
@@ -98,6 +100,7 @@ function mgetusrinfo($muser_id)
         $member_handler =& xoops_gethandler('member');
         $thisUser =& $member_handler->getUser($muser_id);
     }
+
     return $thisUser;
 }
 
@@ -149,6 +152,7 @@ function simple_query($table_name, $key_col='', $key_val='',$ignore=array())
         }
     }
     mysql_free_result($db_rs);
+
     return $simple_q;
 }
 
@@ -332,7 +336,6 @@ function ShowImgXYBox($xnm, $ynm, $desc, $inpSize, $extra)
  * Functions to save Administration settings
  */
 
-
 /**
  * Update the Config option in the database
  *
@@ -354,6 +357,7 @@ function UpdateDb($name, $sub, $val, $txt)
     $rvalue = $xoopsDB->query($insert_Recordset);
     echo "</span>";
     $retVal = ($rvalue) ? TRUE : FALSE;
+
     return $retVal;
 }
 
@@ -409,6 +413,7 @@ function getLibConfig($name)
     $row = $xoopsDB->fetchArray($Recordset);
     //	$text = $b = html_entity_decode($row['text']);
     $text = html_entity_decode($row['text']);
+
     return $text;
 }
 
@@ -486,4 +491,3 @@ function adminmain() {
     echo "</table>\n";
     echo "<br /></div>\n";
 }
-?>

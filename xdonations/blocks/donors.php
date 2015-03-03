@@ -145,7 +145,6 @@ function b_donations_donors_edit($options) {
         $form .= " selected";
     }
     $form .= " />" . _NO . "</option></select>";
+
     return $form;
 }
-
-?>

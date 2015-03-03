@@ -122,6 +122,3 @@ if ( is_object($xoopsUser) && ( $xoopsUser->isAdmin() ) ) {
 // Templates
 $modversion['templates'][1]['file'] = 'donations_main.html';
 $modversion['templates'][1]['description'] = 'Donations Main Template';
-
-
-?>

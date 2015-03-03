@@ -29,7 +29,6 @@
 /* USA                                                                  */
 /************************************************************************/
 
-
 include 'header.php';
 include_once 'include' . DIRECTORY_SEPARATOR . 'functions.php';
 $xoopsOption['template_main'] = 'donations_main.html';
@@ -119,4 +118,3 @@ $xoopsTpl->assign('SUBMIT_BUTTON',     _MD_DON_SUBMIT_BUTTON);
 $xoopsTpl->assign('PAYPAL_URL',        $paypal_url);
 
 include 'footer.php';
-?>

@@ -50,7 +50,7 @@ function Treasury()
 {
     global $tr_config, $xoopsDB, $xoopsModule, $modversion, $curr_sign, $pathIcon16;
     include_once XOOPS_ROOT_PATH . DIRECTORY_SEPARATOR . 'class'   . DIRECTORY_SEPARATOR . 'xoopsformloader.php';
-	$indexAdmin = new ModuleAdmin();
+    $indexAdmin = new ModuleAdmin();
 echo $indexAdmin->addNavigation('donations.php?op=Treasury');
 
     // Register paging
@@ -156,12 +156,12 @@ echo $indexAdmin->addNavigation('donations.php?op=Treasury');
     }
 
         echo "<table class='outer' width='100%' border='0' cellpadding='0' cellspacing='0'>"
-        . "<th align='center'>" . _AD_DON_DATE 
-		. "</th><th align='center'>". _AD_DON_NUM 
-		. "</th><th align='center'>" . _AD_DON_NAME 
-        . "</th><th align='center'>" . _AD_DON_DESCRIPTION 
-        . "</th><th align='center'>" . _AD_DON_AMOUNT 
-        . "</th><th align='center'>" . _AD_DON_ACTION 
+        . "<th align='center'>" . _AD_DON_DATE
+        . "</th><th align='center'>". _AD_DON_NUM
+        . "</th><th align='center'>" . _AD_DON_NAME
+        . "</th><th align='center'>" . _AD_DON_DESCRIPTION
+        . "</th><th align='center'>" . _AD_DON_AMOUNT
+        . "</th><th align='center'>" . _AD_DON_ACTION
         . "</th></tr>\n";
 //		$class = 'even';
 
@@ -180,10 +180,10 @@ echo $indexAdmin->addNavigation('donations.php?op=Treasury');
             echo "style=\"color: #FF0000;\"";
         }
         echo ">{$curr_sign}{$amt}</span></td>\n";
-		
+        
         if ( $numRec!=0 ) {
-	    echo "<td style=\"text-align: center;\">";
-		$jscriptCmd = "<a href=\"javascript: void 0\" onclick=\""
+        echo "<td style=\"text-align: center;\">";
+        $jscriptCmd = "<a href=\"javascript: void 0\" onclick=\""
             ."document.recedit.id.value = '$row_Recordset1[id]'; "
             ."document.recedit.StartDate.value = '$row_Recordset1[fdate]'; ";
             $jscriptCmd .= "document.recedit.Num.value = '$row_Recordset1[num]'; "
@@ -197,11 +197,11 @@ echo $indexAdmin->addNavigation('donations.php?op=Treasury');
             ."<a href=\"donations.php?op=FinRegDel&id=$row_Recordset1[id]\">"
             ."<img style=\"border-width: 0px; width: 16px; height: 16px;\" src=". $pathIcon16 .'/delete.png'." alt='" . _DELETE . "' title='" . _DELETE ."'\" onClick=\"return confirm('" . _AD_DON_CONFIRM_DELETE . '\n\n' . _AD_DON_CONFIRM_ACTION . "')\""
             ." /></a>"
-			."</td>\n"
-			;
+            ."</td>\n"
+            ;
             echo $jscriptCmd;
-       }		
-			
+       }
+            
 
     } while ($row_Recordset1 = $xoopsDB->fetchArray($Recordset1));
 
@@ -333,7 +333,7 @@ function Config()
 {
     global $tr_config, $xoopsModule, $modversion, $xoopsDB;
     //------------------------------------------------------------------------
-	$indexAdmin = new ModuleAdmin();
+    $indexAdmin = new ModuleAdmin();
     echo $indexAdmin->addNavigation('donations.php?op=Config');
     ?>
 <script Language="JavaScript">
@@ -529,7 +529,7 @@ function checkCancelledURL()
     echo "</td></tr>\n";
     echo "<tr><td style=\"text-align: center; width: 100%;\"><br /><input type=\"submit\" value=\"" . _AD_DON_SUBMIT ."\" /></td></tr>";
     echo "</table><br /><br />\n";
-    echo $indexAdmin->addNavigation('donations.php?op=Config');    
+    echo $indexAdmin->addNavigation('donations.php?op=Config');
     echo "<table style=\"border-width: 1px; width: 90%; text-align: center;\"><tr>\n";
     echo "<td class=\"title\" style=\"font-weight: bold; text-align: center;\"><h3>" . _AD_DON_CONFIG_PAYPAL_HEADER . "</h3><br />\n";
     echo "<table style=\"border-width: 1px; text-align: center;\">\n";
@@ -593,7 +593,6 @@ function checkCancelledURL()
     . "  </tr>\n";
 
     ShowTextBox('ipn_log_entries', '<nobr><span style=\'font-weight: bold;\'>'._AD_DON_LOG_ENTRY.'</span></nobr>', '', '4', '');
-
 
     $desc = 'This box shows the link to the IPN recorder.
     This link must be pasted EXACTLY as it is
@@ -815,7 +814,7 @@ function IpnRec()
 function ShowLog() {
     global $tr_config, $modversion, $xoopsDB, $curr_sign;
     include_once XOOPS_ROOT_PATH . DIRECTORY_SEPARATOR . 'class'   . DIRECTORY_SEPARATOR . 'xoopsformloader.php';
-	$indexAdmin = new ModuleAdmin();
+    $indexAdmin = new ModuleAdmin();
     echo $indexAdmin->addNavigation('donations.php?op=ShowLog');
 
     $query_Recordset1 = "SELECT id, log_date, payment_date, logentry FROM " . $xoopsDB->prefix('donations_translog') . " ORDER BY log_date DESC";
