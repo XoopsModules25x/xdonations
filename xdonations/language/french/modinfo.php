@@ -103,7 +103,6 @@ define('_MI_DON_T_pp_curr_code_array',          'Choisissez votre monaie par d&e
                                                 .'TWD = Taiwan New Dollar'.'<br />'
                                                 .'USD = United States Dollar'.'<br />');
 
-
 define('_MI_DON_T_pp_get_addr_',                 'Souhaitez-vous ajouter PayPal pour recueillir l&apos;adresse d&apos;exp&eacute;dition de  l&apos;utilisateur ?'.'<br />'
 .'Les utilisateurs peuvent choisir de ne pas le faire.'.'<br />'
 .'Cela pourrait &ecirc;tre utile si vous voulez envoyer des cartes de voeux par exemple.');
@@ -194,4 +193,3 @@ define('_MI_DON_V_week_goal_2nd',                '60');
 define('_MI_DON_V_week_goal_3rd',                '60');
 define('_MI_DON_V_week_goal_4th',                '60');
 define('_MI_DON_z_test',                         'Pour test');
-?>

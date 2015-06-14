@@ -28,7 +28,7 @@ include '..' . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'function
 xoops_cp_header();
 //adminmain();
 
-	$indexAdmin = new ModuleAdmin();
+    $indexAdmin = new ModuleAdmin();
 echo $indexAdmin->addNavigation('transaction.php');
 
 $txn_id = (isset($_GET['txn_id'])) ? $_GET['txn_id'] : NULL ;

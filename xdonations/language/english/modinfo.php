@@ -180,5 +180,3 @@ define('_MI_DON_z_test',                         'For testing');
 //1.9.7
 define('_MI_DON_MENU_00',                         'Home');
 define('_MI_DON_ADMIN_ABOUT',                     'About');
-
-?>

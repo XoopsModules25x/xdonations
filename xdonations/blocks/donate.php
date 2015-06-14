@@ -57,7 +57,6 @@ function b_donations_donate_show($options) {
     $PP_TY_URL = $tr_config['ty_url'];
     $PP_CANCEL_URL = $tr_config['pp_cancel_url'];
 
-
     // Fill out some more template tags
     $DON_BUTTON_SUBMIT = $tr_config['don_button_submit'];
 
@@ -115,4 +114,3 @@ function b_donations_donate_show($options) {
 
     return $block;
 }
-?>

@@ -383,4 +383,3 @@ function dprt($str, $clvl)
         }
     }
 }
-?>

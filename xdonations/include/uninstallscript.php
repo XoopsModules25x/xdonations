@@ -28,4 +28,3 @@ $lpFile = XOOPS_UPLOAD_PATH . DIRECTORY_SEPARATOR . 'xdonations_ipn.log';
 if (file_exists($lpFile)) {
     unlink($lpFile);
 }
-?>

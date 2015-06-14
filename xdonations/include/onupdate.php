@@ -11,4 +11,3 @@ if( $ref == '' || strpos( $ref , XOOPS_URL.'/modules/system/admin.php' ) === 0 )
     eval( 'xoops_module_install_' . $xypDir . '();
         ' ) ;
 }
-?>

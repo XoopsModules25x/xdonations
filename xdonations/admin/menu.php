@@ -68,10 +68,8 @@ $adminmenu[$i] = array ('title'      => _MI_DON_TREASURY_F_REGISTER,
                         'link'       => "admin/donations.php?op=Config",
                         'icon'       =>$pathIcon32.'/administration.png',
                         );
-						
-						$i++;
+                        
+                        $i++;
 $adminmenu[$i]["title"] = _MI_DON_ADMIN_ABOUT;
 $adminmenu[$i]["link"] = 'admin/about.php';
 $adminmenu[$i]["icon"] = $pathIcon32.'/about.png';
-						
-?>
