@@ -1,8 +1,8 @@
 /************************************************************************/
 /* xDonations - Paypal financial management module for Xoops 2          */
-/* Copyright (c) 2004 by Xoops2 Donations Module Dev Team		*/
-/* http://dev.xoops.org/modules/xfmod/project/?group_id=1060		*/
-/* $Id: INSTALL.txt,v 1.7 2004/11/04 15:32:50 blackdeath_csmc Exp $     */
+/* Copyright (c) 2004 by Xoops2 Donations Module Dev Team       */
+/* http://dev.xoops.org/modules/xfmod/project/?group_id=1060        */
+/* 
 /************************************************************************/
 /*                                                                      */
 /* Based on NukeTreasury for PHP-Nuke - by Dave Lawrence AKA Thrash     */
@@ -15,23 +15,23 @@
 /*                                                                      */
 /* Ce programme est un logiciel libre, vous pouvez le redistribuer      */
 /* et / ou le modifier                                                  */
-/* Selon les termes de la GNU General Public License telle que publiée  */
+/* Selon les termes de la GNU General Public License telle que publiÃ©e  */
 /* par The Free Software Foundation, soit la version 2 de la licence.   */
 /*                                                                      */
-/* Ce programme est distribué dans l'espoir qu'il sera utile, mais      */
-/* SANS AUCUNE GARANTIE; sans même la garantie implicite de             */
+/* Ce programme est distribuÃ© dans l'espoir qu'il sera utile, mais      */
+/* SANS AUCUNE GARANTIE; sans mÃªme la garantie implicite de             */
 /* MARCHANDE ou D'ADAPTATION A UN OBJET PARTICULIER. Voyez la GNU       */
-/* General Public License pour plus de détails.                         */
+/* General Public License pour plus de dÃ©tails.                         */
 /*                                                                      */
-/* Vous devriez avoir reçu une copie de la GNU General Public License   */
-/* Avec ce programme; sinon, écrivez à la Free Software                 */
+/* Vous devriez avoir reÃ§u une copie de la GNU General Public License   */
+/* Avec ce programme; sinon, Ã©crivez Ã  la Free Software                 */
 /* Foundation, Inc, 59 Temple Place, Suite 330, Boston, MA 02111-1307   */
 /* USA                                                                  */
 /************************************************************************/
 
 
-** Ce module à été écrit pour Xoops2 CMS seulement! **
-** Raporter tous les bugs à http://dev.xoops.org/modules/xfmod/tracker/?group_id=1060&atid=346 **
+** Ce module Ã  Ã©tÃ© Ã©crit pour Xoops2 CMS seulement! **
+** Raporter tous les bugs Ã  http://dev.xoops.org/modules/xfmod/tracker/?group_id=1060&atid=346 **
 
 
 **** REQUIREMENTS ****
@@ -42,24 +42,24 @@ Xoops 2.0.x
 
 
 **** INSTALLATION ****
-Pour installer ce module, télécharger le contenu du dossier 'html' folder
-dans le répertoire racine de votre site.
-Installez ce module comme tout autre module Xoops, à partir du menu d'administration des module.
+Pour installer ce module, tÃ©lÃ©charger le contenu du dossier 'html' folder
+dans le rÃ©pertoire racine de votre site.
+Installez ce module comme tout autre module Xoops, Ã  partir du menu d'administration des module.
 
-Un fois proprement installé, vous pourrez voir l'icone du module sur la gauche de la fenêtre d'administration de Xoops. Naviguez jusqu'à la fenêtre popup du module Donations, cliquer sur "configuration".
-Vous avez maintenant tous les éléments de configuration du module dont vous avez besoin.
+Un fois proprement installÃ©, vous pourrez voir l'icone du module sur la gauche de la fenÃªtre d'administration de Xoops. Naviguez jusqu'Ã  la fenÃªtre popup du module Donations, cliquer sur "configuration".
+Vous avez maintenant tous les Ã©lÃ©ments de configuration du module dont vous avez besoin.
 
  **** IMPORTANT ****
- N'oubliez pas de changer l'email du bénéficiaire par votre propre email enregistrée dans votre compte chez payPal.
-Vérifiez bien cette adresse, sinon les transaction échuoueront et aucun montant ne sera crédité.
-Pour vérifier votre courriel, connectez vous à votre compte PayPal et dans le panneau de configuration des préférences personneles optins "emails" vous devez voir la liste des courriel valide.
+ N'oubliez pas de changer l'email du bÃ©nÃ©ficiaire par votre propre email enregistrÃ©e dans votre compte chez payPal.
+VÃ©rifiez bien cette adresse, sinon les transaction Ã©chuoueront et aucun montant ne sera crÃ©ditÃ©.
+Pour vÃ©rifier votre courriel, connectez vous Ã  votre compte PayPal et dans le panneau de configuration des prÃ©fÃ©rences personneles optins "emails" vous devez voir la liste des courriel valide.
 
 **** EQUALLY IMPORTANT :P ****
-Assurez vous que votre compte paPal est configuré pour recevoir les notification IPN
-Si ce n'est pas le cas vous pourrez croire que le module ne reçois pas les notifications de donation.
-POUR ACTIVER LES NOTIFICATION IPN, connectez à votre compte puis allez dnas les "préférences de notification instannées" et activée l'option. Vous devez spécifier l'URL de notification de votre site. C'est l'adresse suivante aprs avoir changer "<{VOTRE8SITE}>" par le nom de votre site:
+Assurez vous que votre compte paPal est configurÃ© pour recevoir les notification IPN
+Si ce n'est pas le cas vous pourrez croire que le module ne reÃ§ois pas les notifications de donation.
+POUR ACTIVER LES NOTIFICATION IPN, connectez Ã  votre compte puis allez dnas les "prÃ©fÃ©rences de notification instannÃ©es" et activÃ©e l'option. Vous devez spÃ©cifier l'URL de notification de votre site. C'est l'adresse suivante aprs avoir changer "<{VOTRE8SITE}>" par le nom de votre site:
     http://<{VOTRE8SITE}>/modules/xdonations/ipnppd.php
-Sauvegarder les préférences, vous maintenant utiliser le modules Donations. :)
+Sauvegarder les prÃ©fÃ©rences, vous maintenant utiliser le modules Donations. :)
 
 **** EQUALLY IMPORTANT :P ****
 Vous pouvez aussi indiquer l'adresse de remrciement de votre site. Pratique pour rediriger les utilisateur vers votre site tout en les remerciant.
@@ -69,29 +69,29 @@ Vous pouvez aussi indiquer l'adresse de remrciement de votre site. Pratique pour
 
 *** HISTORIQUE ***
 -- Ajout des ficher de constantes de langue pour permettre d'autres langues
--- Ajout de définitions de constante des langues / Anglais / main.php
+-- Ajout de dÃ©finitions de constante des langues / Anglais / main.php
 -- Correction IPN mode Debug
--- Ajouté include / functions.php pour redondant code de fonction et corrections de bugs pour une
--- Ajouté success.php et cancel.php succès pour le don et d'annuler les pages
--- Ajouté include / installscript.php de mettre en place succès et d'annuler les pages dans le PB
+-- AjoutÃ© include / functions.php pour redondant code de fonction et corrections de bugs pour une
+-- AjoutÃ© success.php et cancel.php succÃ¨s pour le don et d'annuler les pages
+-- AjoutÃ© include / installscript.php de mettre en place succÃ¨s et d'annuler les pages dans le PB
 -- Ajout de la langue inclut dans header.php
--- Changement de don mensuel par défaut objectifs à des valeurs inférieures
--- Changement par défaut "Oui" et "Non" pour les options index.php formulaire de don
--- Ajout de "Left to go» et «l'excédent» à la ligne en bas de blocs / Donat-o-meter.php sortie
--- Changement de nom de bloc par défaut pour les blocs / Donat-o-meter.php de "dons"
--- Changement de templates / donations_main.htm à lui donner l'air joli ;-) ( "Visual optimisation")
--- Ajouté include / common.php pour IPN include (inaccessibilité empêche de ipnppd.php dans certains cas)
+-- Changement de don mensuel par dÃ©faut objectifs Ã  des valeurs infÃ©rieures
+-- Changement par dÃ©faut "Oui" et "Non" pour les options index.php formulaire de don
+-- Ajout de "Left to goÂ» et Â«l'excÃ©dentÂ» Ã  la ligne en bas de blocs / Donat-o-meter.php sortie
+-- Changement de nom de bloc par dÃ©faut pour les blocs / Donat-o-meter.php de "dons"
+-- Changement de templates / donations_main.htm Ã  lui donner l'air joli ;-) ( "Visual optimisation")
+-- AjoutÃ© include / common.php pour IPN include (inaccessibilitÃ© empÃªche de ipnppd.php dans certains cas)
 ... et un mess d'autres petites choses.
 
--- Modification du module pour supporter les traductions, dans le panneau d'administration et dans les javascript. (fait par J°J°D : jjd@kiolo.com).
--- Correction de divers bug javascript, et remplacement de "HTTP_GET_VARS" "HTTP_POST_VARS" par "_GET" et "_POST" dans le fichier "admin/index.php".  (fait par J°J°D : jjd@kiolo.com)
+-- Modification du module pour supporter les traductions, dans le panneau d'administration et dans les javascript. (fait par JÂ°JÂ°D : jjd@kiolo.com).
+-- Correction de divers bug javascript, et remplacement de "HTTP_GET_VARS" "HTTP_POST_VARS" par "_GET" et "_POST" dans le fichier "admin/index.php".  (fait par JÂ°JÂ°D : jjd@kiolo.com)
 
 
 *** L'EQUIPE DE xDonations ***
-Nous espérons que vous apprécierez notre module! Assurez-vous de nous donner votre feedback sur les modules, et, comme toujours,
-nous vous invitons à rapporter les bogues et à écrire demande de fonctionnalité billets sur notre site à
+Nous espÃ©rons que vous apprÃ©cierez notre module! Assurez-vous de nous donner votre feedback sur les modules, et, comme toujours,
+nous vous invitons Ã  rapporter les bogues et Ã  Ã©crire demande de fonctionnalitÃ© billets sur notre site Ã 
 http://dev.xoops.org/modules/xfmod/project/?group_id=1060
 
-Enjoy, et soyez à l'affût de la prochaine version!
+Enjoy, et soyez Ã  l'affÃ»t de la prochaine version!
 
--- La xDonations Dev Team + J°J°D --
+-- La xDonations Dev Team + JÂ°JÂ°D --

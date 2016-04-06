@@ -1,9 +1,9 @@
 <?php
 /************************************************************************/
 /* Donations - Paypal financial management module for Xoops 2           */
-/* Copyright (c) 2004 by Xoops2 Donations Module Dev Team			    */
-/* http://dev.xoops.org/modules/xfmod/project/?group_id=1060			*/
-/* $Id: functions.php 8193 2011-11-07 02:42:53Z beckmi $      */
+/* Copyright (c) 2016 XOOPS Project                                     */
+/* http://dev.xoops.org/modules/xfmod/project/?group_id=1060            */
+/* 
 /************************************************************************/
 /*                                                                      */
 /* Based on NukeTreasury for PHP-Nuke - by Dave Lawrence AKA Thrash     */
@@ -29,41 +29,40 @@
 /* USA                                                                  */
 /************************************************************************/
 
-defined('XOOPS_ROOT_PATH') or die('Restricted access');
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
 /**
  * Set the Currency Indicator ($, etc...)
  *
- * @param string $curr PAYPAL abbreviation for currency
+ * @param  string $curr PAYPAL abbreviation for currency
  * @return string currency indicator (sign)
  *
  */
-function define_curr($curr)
+function defineCurrency($curr)
 {
-    switch ($curr)
-    {
-        case 'AUD' :
-            $curr_sign = _MD_DON_CURR_EUR;
+    switch ($curr) {
+        case 'AUD':
+            $currencySign = _MD_DON_CURR_AUD;
             break;
-        case 'EUR' :
-            $curr_sign = _MD_DON_CURR_EUR;
+        case 'EUR':
+            $currencySign = _MD_DON_CURR_EUR;
             break;
-        case 'GBP' :
-            $curr_sign = _MD_DON_CURR_GBP;
+        case 'GBP':
+            $currencySign = _MD_DON_CURR_GBP;
             break;
-        case 'JPY' :
-            $curr_sign = _MD_DON_CURR_JPY;
+        case 'JPY':
+            $currencySign = _MD_DON_CURR_JPY;
             break;
-        case 'CAD' :
-            $curr_sign = _MD_DON_CURR_CAD;
+        case 'CAD':
+            $currencySign = _MD_DON_CURR_CAD;
             break;
-        case 'USD' :
+        case 'USD':
         default:
-            $curr_sign = _MD_DON_CURR_USD;
+            $currencySign = _MD_DON_CURR_USD;
             break;
     }
 
-    return $curr_sign;
+    return $currencySign;
 }
 
 /**
@@ -75,11 +74,10 @@ function configInfo()
 {
     global $xoopsDB;
 
-    $query_cfg = "SELECT * FROM ".$xoopsDB->prefix("donations_config")." WHERE subtype = '' OR subtype = 'array'";
-    $cfgset = $xoopsDB->query($query_cfg);
+    $query_cfg = 'SELECT * FROM ' . $xoopsDB->prefix('donations_config') . " WHERE subtype = '' OR subtype = 'array'";
+    $cfgset    = $xoopsDB->query($query_cfg);
     $tr_config = array();
-    while ( $cfgset && $row = $xoopsDB->fetchArray($cfgset))
-    {
+    while ($cfgset && $row = $xoopsDB->fetchArray($cfgset)) {
         $tr_config[$row['name']] = $row['value'];
     }
 
@@ -89,16 +87,16 @@ function configInfo()
 /**
  * Get XOOPS Member Object
  *
- * @param int $muser_id
+ * @param  int $muser_id
  * @return FALSE - no member info avail for this id, SUCCESS - member object
  */
-function mgetusrinfo($muser_id)
+function mgetUserInfo($muser_id)
 {
     global $xoopsDB;
-    $thisUser = FALSE;
-    if (intval($muser_id) > 0) {
-        $member_handler =& xoops_gethandler('member');
-        $thisUser =& $member_handler->getUser($muser_id);
+    $thisUser = false;
+    if ((int)$muser_id > 0) {
+        $member_handler = xoops_getHandler('member');
+        $thisUser       = $member_handler->getUser($muser_id);
     }
 
     return $thisUser;
@@ -111,47 +109,47 @@ function mgetusrinfo($muser_id)
  *
  * $list=simple_query($xoopsDB->prefix('donations_transactions'));
  *
- * @param string $table_name DB table name
- * @param string $key_col (optional) table column name
- * @param mixed $key_val (optional) table column value
- * @param array $ignore (optional) list of values to ignore (clear)
- * @return mixed FALSE - nothing found, SUCCESS - array() of values
+ * @param  string $table_name DB table name
+ * @param  string $key_col    (optional) table column name
+ * @param  mixed  $key_val    (optional) table column value
+ * @param  array  $ignore     (optional) list of values to ignore (clear)
+ * @return mixed  FALSE - nothing found, SUCCESS - array() of values
  */
-function simple_query($table_name, $key_col='', $key_val='',$ignore=array())
+function simple_query($table_name, $key_col = '', $key_val = '', $ignore = array())
 {
     global $xoopsDB;
     // open the db
-    $db_link = mysql_connect(XOOPS_DB_HOST, XOOPS_DB_USER, XOOPS_DB_PASS);
-    $keys='';
-    if($key_col!=''&&$key_val!=''){
+//    $db_link = mysqli_connect(XOOPS_DB_HOST, XOOPS_DB_USER, XOOPS_DB_PASS);
+    $keys    = '';
+    if ($key_col != '' && $key_val != '') {
         $keys = "WHERE $key_col = $key_val";
     }
     // query table using key col/val
-    $simple_q = FALSE;
-    $db_rs = mysql_query("SELECT * FROM $table_name $keys", $db_link);
-    $num_fields = mysql_num_fields($db_rs);
+    $simple_q   = false;
+    $db_rs      = $xoopsDB->query("SELECT * FROM $table_name $keys");
+    $num_fields = $xoopsDB->getFieldsNum($db_rs);
     if ($num_fields) {
         // first (and only) row
         $simple_q = array();
-        $row = mysql_fetch_assoc($db_rs);
+        $row      = $xoopsDB->fetchArray($db_rs);
         // load up array
-        if($key_col!='' && $key_val!=''){
-            for ($i = 0; $i < $num_fields; $i++) {
-                $var='';
-                $var = mysql_field_name($db_rs, $i);
+        if ($key_col != '' && $key_val != '') {
+            for ($i = 0; $i < $num_fields; ++$i) {
+                $var            = '';
+                $var            = $xoopsDB->getFieldName($db_rs, $i);
                 $simple_q[$var] = $row[$var];
             }
-        }else{
-            for ($i = 0; $i < $num_fields; $i++) {
-                $var='';
-                $var = mysql_field_name($db_rs, $i);
-                if(!in_array($var,$ignore)){
+        } else {
+            for ($i = 0; $i < $num_fields; ++$i) {
+                $var = '';
+                $var = $xoopsDB->getFieldName($db_rs, $i);
+                if (!in_array($var, $ignore)) {
                     $simple_q[$var] = '';
                 }
             }
         }
     }
-    mysql_free_result($db_rs);
+    $xoopsDB->freeRecordSet($db_rs);
 
     return $simple_q;
 }
@@ -170,22 +168,17 @@ function ShowYNBox($name, $desc)
 {
     global $tr_config, $modversion, $xoopsDB;
 
-    $query_cfg = "SELECT * FROM " . $xoopsDB->prefix("donations_config")
-    . " WHERE name = '{$name}'";
-    $cfgset = $xoopsDB->query($query_cfg);
-    if( $cfgset ) {
-        $cfg = $xoopsDB->fetchArray($cfgset);
+    $query_cfg = 'SELECT * FROM ' . $xoopsDB->prefix('donations_config') . " WHERE name = '{$name}'";
+    $cfgset    = $xoopsDB->query($query_cfg);
+    if ($cfgset) {
+        $cfg  = $xoopsDB->fetchArray($cfgset);
         $text = htmlentities($cfg['text']);
-        echo "<tr>\n"
-        . "  <td title=\"{$text}\" style=\"text-align: right;\">{$desc}</td>\n"
-        . "  <td title=\"{$text}\" style=\"text-align: left\">";
+        echo "<tr>\n" . "  <td title=\"{$text}\" style=\"text-align: right;\">{$desc}</td>\n" . "  <td title=\"{$text}\" style=\"text-align: left;\">";
         echo "    <select size=\"1\" name=\"var_{$name}\">";
-        if( $cfg['value'] ) {
-            echo "      <option selected value=\"1\">" . _YES . "</option>"
-            . "      <option value=\"0\">" . _NO . "</option>";
+        if ($cfg['value']) {
+            echo "      <option selected value=\"1\">" . _YES . '</option>' . "      <option value=\"0\">" . _NO . '</option>';
         } else {
-            echo "      <option value=\"1\">" . _YES . "</option>"
-            . "      <option selected value=\"0\">" . _NO . "</option>";
+            echo "      <option value=\"1\">" . _YES . '</option>' . "      <option selected value=\"0\">" . _NO . '</option>';
         }
         echo "    </select>\n";
         echo "  </td>\n";
@@ -203,23 +196,20 @@ function ShowDropBox($name, $desc)
 {
     global $tr_config, $modversion, $xoopsDB;
 
-    $query_cfg = "SELECT * FROM " . $xoopsDB->prefix("donations_config")
-    . " WHERE name = '{$name}'";
-    $cfgset = $xoopsDB->query($query_cfg);
-    if( $cfgset ) {
-        $cfg = $xoopsDB->fetchArray($cfgset);
+    $query_cfg = 'SELECT * FROM ' . $xoopsDB->prefix('donations_config') . " WHERE name = '{$name}'";
+    $cfgset    = $xoopsDB->query($query_cfg);
+    if ($cfgset) {
+        $cfg  = $xoopsDB->fetchArray($cfgset);
         $text = htmlentities($cfg['text']);
-        echo "<tr style=\"text-align: center;\">\n"
-        . "  <td title=\"{$text}\" style=\"text-align: right; width: 50%;\">{$desc}</td>\n"
-        . "  <td title=\"{$text}\" style=\"text-align: left;\">\n";
+        echo "<tr style=\"text-align: center;\">\n" . "  <td title=\"{$text}\" style=\"text-align: right; width: 50%;\">{$desc}</td>\n" . "  <td title=\"{$text}\" style=\"text-align: left;\">\n";
         echo "    <select size=\"1\" name=\"var_{$name}-array\">\n";
-        if( isset($cfg['value']) ) {
+        if (isset($cfg['value'])) {
             $splitArr = explode('|', $cfg['value']);
-            $i=0;
-            while($i < count($splitArr)){
-                $selected = ( 0 == $i ) ? ' selected' : '';
+            $i        = 0;
+            while ($i < count($splitArr)) {
+                $selected = (0 == $i) ? ' selected' : '';
                 echo "      <option{$selected} value=\"{$splitArr[$i]}\">{$splitArr[$i]}</option>\n";
-                $i++;
+                ++$i;
             }
         }
         echo "    </select>\n";
@@ -231,38 +221,35 @@ function ShowDropBox($name, $desc)
 /**
  * Display Config Array Drop Box in HTML 2 column table row
  *
- * @param string $name name of DB column in config table
- * @param string $desc description to display for select box
- * @param array $x_array array( array($value1, $attrib1), array(...) )
+ * @param string $name    name of DB column in config table
+ * @param string $desc    description to display for select box
+ * @param array  $x_array array( array($value1, $attrib1), array(...) )
  */
 function ShowArrayDropBox($name, $desc, $x_array)
 {
     global $tr_config, $modversion, $xoopsDB;
-    $query_cfg = "SELECT * FROM ".$xoopsDB->prefix("donations_config")
-    . " WHERE name = '{$name}' LIMIT 1";
-    $cfgset = $xoopsDB->query($query_cfg);
-    if( $cfgset ) {
-        $cfg = $xoopsDB->fetchArray($cfgset);
+    $query_cfg = 'SELECT * FROM ' . $xoopsDB->prefix('donations_config') . " WHERE name = '{$name}' LIMIT 1";
+    $cfgset    = $xoopsDB->query($query_cfg);
+    if ($cfgset) {
+        $cfg  = $xoopsDB->fetchArray($cfgset);
         $text = htmlentities($cfg['text']);
-        echo "<tr>\n"
-        ."  <td title=\"{$text}\" style=\"text-align: right;\">{$desc}</td>\n"
-        ."  <td title=\"{$text}\" style=\"text-align: left;\">\n";
+        echo "<tr>\n" . "  <td title=\"{$text}\" style=\"text-align: right;\">{$desc}</td>\n" . "  <td title=\"{$text}\" style=\"text-align: left;\">\n";
         echo "    <select size=\"1\" name=\"var_{$name}\">\n";
-        if ( isset($cfg['value']) ) {
-            if ( 0 == $cfg['value'] ) {
+        if (isset($cfg['value'])) {
+            if (0 == $cfg['value']) {
                 echo "      <option selected value=\"0\">-------</option>\n";
-            }else{
+            } else {
                 echo "      <option value=\"0\">-------</option>\n";
             }
-            $i=0;
-            while( $i < count($x_array) ){
-                $mvar = $x_array[$i];
+            $i = 0;
+            while ($i < count($x_array)) {
+                $mvar     = $x_array[$i];
                 $selected = '';
-                if ( $mvar[0] == $cfg['value'] ) {
+                if ($mvar[0] == $cfg['value']) {
                     $selected = ' selected';
                 }
                 echo "      <option{$selected} value=\"{$mvar[0]}\">{$mvar[1]}</option>\n";
-                $i++;
+                ++$i;
             }
         }
         echo "    </select>\n";
@@ -274,61 +261,55 @@ function ShowArrayDropBox($name, $desc, $x_array)
 /**
  * Display Config Option Text Box in a 2 column table row
  *
- * @param string $name name of DB column in config table
- * @param string $desc description of text box to display
- * @param int $tdWidth width of description field
- * @param int $inpSize width of text input box
- * @param string $extra extra info included in input box 'string'
+ * @param string $name    name of DB column in config table
+ * @param string $desc    description of text box to display
+ * @param int    $tdWidth width of description field
+ * @param int    $inpSize width of text input box
+ * @param string $extra   extra info included in input box 'string'
  */
 function ShowTextBox($name, $desc, $tdWidth, $inpSize, $extra)
 {
     global $tr_config, $modversion, $xoopsDB;
 
-    $query_cfg = "SELECT * FROM ".$xoopsDB->prefix("donations_config")
-    . " WHERE name = '{$name}'";
-    $cfgset = $xoopsDB->query($query_cfg);
-    if( $cfgset ) {
-        $cfg = $xoopsDB->fetchArray($cfgset);
+    $query_cfg = 'SELECT * FROM ' . $xoopsDB->prefix('donations_config') . " WHERE name = '{$name}'";
+    $cfgset    = $xoopsDB->query($query_cfg);
+    if ($cfgset) {
+        $cfg  = $xoopsDB->fetchArray($cfgset);
         $text = htmlentities($cfg['text']);
-        echo "<tr>\n"
-        . "  <td title=\"{$text}\" style=\"text-align: right; width: {$tdWidth}\">{$desc}</td>\n"
-        . "  <td title=\"{$text}\" style=\"text-align: left;\">\n"
-        . "    <input size=\"{$inpSize}\" name=\"var_{$name}\" type=\"text\" value=\"{$cfg['value']}\"  {$extra} />\n"
-        . "  </td>\n"
-        . "</tr>\n";
+        echo "<tr>\n" . "  <td title=\"{$text}\" style=\"text-align: right; width: {$tdWidth};\">{$desc}</td>\n" . "  <td title=\"{$text}\" style=\"text-align: left;\">\n" . "    <input size=\"{$inpSize}\" name=\"var_{$name}\" type=\"text\" value=\"{$cfg['value']}\"  {$extra} />\n" . "  </td>\n" . "</tr>\n";
     }
 }
 
 /************************************************************************
  *
- ************************************************************************/
+ ***********************************************************************
+ * @param $xnm
+ * @param $ynm
+ * @param $desc
+ * @param $inpSize
+ * @param $extra
+ */
 function ShowImgXYBox($xnm, $ynm, $desc, $inpSize, $extra)
 {
     global $tr_config, $modversion, $xoopsDB;
 
-    $query_cfg = "SELECT * FROM ".$xoopsDB->prefix("donations_config")." WHERE name = '$xnm'";
-    $cfgset = $xoopsDB->query($query_cfg);
+    $query_cfg = 'SELECT * FROM ' . $xoopsDB->prefix('donations_config') . " WHERE name = '$xnm'";
+    $cfgset    = $xoopsDB->query($query_cfg);
 
-    if( $cfgset) {
+    if ($cfgset) {
         $cfg = $xoopsDB->fetchArray($cfgset);
 
         $text = htmlentities($cfg['text']);
-        echo "<tr>\n"
-        . "  <td title=\"{$text}\" style=\"text-align: right;\">{$desc}</td>\n"
-        . "  <td title=\"{$text}\" style=\"text-align: left;\">\n";
-        echo "    &nbsp;" . _AD_DON_WIDTH . "&nbsp;\n"
-        . "    <input size=\"{$inpSize}\" name=\"var_{$cfg['name']}\" type=\"text\" value=\"{$cfg['value']}\" {$extra} />\n";
+        echo "<tr>\n" . "  <td title=\"{$text}\" style=\"text-align: right;\">{$desc}</td>\n" . "  <td title=\"{$text}\" style=\"text-align: left;\">\n";
+        echo '    &nbsp;' . _AD_DON_WIDTH . "&nbsp;\n" . "    <input size=\"{$inpSize}\" name=\"var_{$cfg['name']}\" type=\"text\" value=\"{$cfg['value']}\" {$extra} />\n";
 
-        $query_cfg = "SELECT * FROM ".$xoopsDB->prefix("donations_config")." WHERE name = '$ynm'";
-        $cfgset = $xoopsDB->query($query_cfg);
-        if( $cfgset)
-        {
+        $query_cfg = 'SELECT * FROM ' . $xoopsDB->prefix('donations_config') . " WHERE name = '$ynm'";
+        $cfgset    = $xoopsDB->query($query_cfg);
+        if ($cfgset) {
             $cfg = $xoopsDB->fetchArray($cfgset);
-            echo "    &nbsp;&nbsp;" . _AD_DON_HEIGHT . "&nbsp;\n"
-            . "    <input size=\"{$inpSize}\" name=\"var_{$cfg['name']}\" type=\"text\" value=\"{$cfg['value']}\" {$extra} />\n";
+            echo '    &nbsp;&nbsp;' . _AD_DON_HEIGHT . "&nbsp;\n" . "    <input size=\"{$inpSize}\" name=\"var_{$cfg['name']}\" type=\"text\" value=\"{$cfg['value']}\" {$extra} />\n";
         }
-        echo "  </td>\n"
-        . "</tr>\n";
+        echo "  </td>\n" . "</tr>\n";
     }
 }
 
@@ -339,79 +320,78 @@ function ShowImgXYBox($xnm, $ynm, $desc, $inpSize, $extra)
 /**
  * Update the Config option in the database
  *
- * @param string $name config var name in the database
- * @param string $sub  config subtype in the database
- * @param mixed $val   config var value
- * @param string $txt  configuration text for this var
- * @return bool TRUE value updated, FALSE value not updated
+ * @param  string $name config var name in the database
+ * @param  string $sub  config subtype in the database
+ * @param  mixed  $val  config var value
+ * @param  string $txt  configuration text for this var
+ * @return bool   TRUE value updated, FALSE value not updated
  */
-function UpdateDb($name, $sub, $val, $txt)
+function updateDb($name, $sub, $val, $txt)
 {
     global $tr_config, $ilog, $xoopsDB;
-    $insert_Recordset = "UPDATE `" . $xoopsDB->prefix("donations_config") . "`"
-    . " SET `value`='$val', `text`='{$txt}'"
-    . " WHERE `name`='{$name}' AND `subtype`='{$sub}'";
-    $ilog .= "{$insert_Recordset}<br /><br />";
-    echo "{$insert_Recordset}<br /><br />";
+    $insertRecordset = 'UPDATE `' . $xoopsDB->prefix('donations_config') . '`' . " SET `value`='$val', `text`='{$txt}'" . " WHERE `name`='{$name}' AND `subtype`='{$sub}'";
+    $ilog .= "{$insertRecordset}<br /><br />";
+    echo "{$insertRecordset}<br /><br />";
     echo "<span style=\"color: #FF0000; font-weight: bold;\">";
-    $rvalue = $xoopsDB->query($insert_Recordset);
-    echo "</span>";
-    $retVal = ($rvalue) ? TRUE : FALSE;
+    $rvalue = $xoopsDB->query($insertRecordset);
+    echo '</span>';
+    $retVal = $rvalue ? true : false;
 
     return $retVal;
 }
 
 /************************************************************************
  *
- ************************************************************************/
-function UpdateDbShort($name, $sub, $val, $txt)
+ ***********************************************************************
+ * @param $name
+ * @param $sub
+ * @param $val
+ * @param $txt
+ */
+function updateDbShort($name, $sub, $val, $txt='')
 {
     global $tr_config, $ilog, $xoopsDB;
-    if($sub=='array'){
-        $newArr = '';
-        $query_cfg = "SELECT * FROM ".$xoopsDB->prefix("donations_config")
-        . " WHERE name = '{$name}'";
-        $cfgset = $xoopsDB->query($query_cfg);
-        $cfg = $xoopsDB->fetchArray($cfgset);
-        if( isset($cfg['value']) ) {
-            $splitArr = explode('|',$cfg['value']);
-            $newArr = $val;
-            $i=0;
-            while($singleVar = $splitArr[$i]) {
-                if ( $singleVar != $val ) {
-                    $newArr = $newArr.'|'.$singleVar;
+    if ($sub === 'array') {
+        $newArr    = '';
+        $query_cfg = 'SELECT * FROM ' . $xoopsDB->prefix('donations_config') . " WHERE name = '{$name}'";
+        $cfgset    = $xoopsDB->query($query_cfg);
+        $cfg       = $xoopsDB->fetchArray($cfgset);
+        if (isset($cfg['value'])) {
+            $splitArr = explode('|', $cfg['value']);
+            $newArr   = $val;
+            $i        = 0;
+            while (false != ($singleVar = $splitArr[$i])) {
+                if ($singleVar != $val) {
+                    $newArr = $newArr . '|' . $singleVar;
                 }
-                $i++;
+                ++$i;
             }
             $val = $newArr;
         }
     }
-    $insert_Recordset = "UPDATE `" . $xoopsDB->prefix("donations_config") . "`"
-    . " SET `value`='{$val}'"
-    . " WHERE `name`='{$name}' AND `subtype`='{$sub}'";
+    $insertRecordset = 'UPDATE `' . $xoopsDB->prefix('donations_config') . '`' . " SET `value`='{$val}'" . " WHERE `name`='{$name}' AND `subtype`='{$sub}'";
 
-    $ilog .= "{$insert_Recordset}<br /><br />\n";
-    echo "{$insert_Recordset}<br /><br /><span style=\"color: #FF0000; font-weight: bold;\">\n";
-    $rvalue = $xoopsDB->query($insert_Recordset);
+    $ilog .= "{$insertRecordset}<br /><br />\n";
+    echo "{$insertRecordset}<br /><br /><span style=\"color: #FF0000; font-weight: bold;\">\n";
+    $rvalue = $xoopsDB->query($insertRecordset);
     echo "</span>\n";
 }
 
 /**
  * Get Configuration Value
  *
- * @param string $name name of configuration variable
- * @return mixed value of config var on success, FALSE on failure
+ * @param  string $name name of configuration variable
+ * @return mixed  value of config var on success, FALSE on failure
  *
  */
 function getLibConfig($name)
 {
     global $xoopsDB;
 
-    $sql = "SELECT * FROM ".$xoopsDB->prefix("donations_config")
-    ." WHERE name = '{$name}'";
+    $sql       = 'SELECT * FROM ' . $xoopsDB->prefix('donations_config') . " WHERE name = '{$name}'";
     $Recordset = $xoopsDB->query($sql);
-    $row = $xoopsDB->fetchArray($Recordset);
-    //	$text = $b = html_entity_decode($row['text']);
+    $row       = $xoopsDB->fetchArray($Recordset);
+    //  $text = $b = html_entity_decode($row['text']);
     $text = html_entity_decode($row['text']);
 
     return $text;
@@ -427,12 +407,11 @@ function getAllLibConfig()
 {
     global $xoopsDB;
 
-    $sql = "SELECT * FROM " . $xoopsDB->prefix("donations_config")
-    . " ORDER BY name, subtype";
+    $sql      = 'SELECT * FROM ' . $xoopsDB->prefix('donations_config') . ' ORDER BY name, subtype';
     $sqlquery = $xoopsDB->query($sql);
 
     $t = array();
-    while ($sqlfetch = $xoopsDB->fetchArray($sqlquery)) {
+    while (false != ($sqlfetch = $xoopsDB->fetchArray($sqlquery))) {
         $text = html_entity_decode($sqlfetch['text']);
         $text = str_replace('<br />', "\r\n", $text);
         $text = str_replace('<br />', "\r\n", $text);
@@ -446,23 +425,28 @@ function getAllLibConfig()
     //displayArray($t,"------getAllLibConfig-----------");
     return $t;
 }
+
 /*******************************************************************
  *
- *******************************************************************/
-function displayArray_don($t, $name = "", $ident = 0)
+ ******************************************************************
+ * @param        $t
+ * @param string $name
+ * @param int    $ident
+ */
+function displayArray_don($t, $name = '', $ident = 0)
 {
     if (is_array($t)) {
-        echo "------------------------------------------------<br />" ;
-        echo "displayArray: " . $name . " - count = " . count($t) ;
+        echo '------------------------------------------------<br />';
+        echo 'displayArray: ' . $name . ' - count = ' . count($t);
         //echo "<table ".getTblStyle().">";
         echo "<table>\n";
 
-        echo "  <tr><td>";
+        echo '  <tr><td>';
         //jjd_echo ("displayArray: ".$name." - count = ".count($t), 255, "-") ;
         echo "</td></tr>\n";
 
         echo "  <tr><td>\n";
-        echo "    <pre>";
+        echo '    <pre>';
         echo print_r($t);
         echo "</pre>\n";
         echo "  </td></tr>\n";
@@ -473,11 +457,13 @@ function displayArray_don($t, $name = "", $ident = 0)
     }
     //jjd_echo ("Fin - ".$name, 255, "-") ;
 }
+
 /**
  * Display main top header table
  *
  */
-function adminmain() {
+function adminmain()
+{
     global $tr_config, $modversion, $xoopsDB;
 
     echo "<div style=\"text-align: center;\">\n";

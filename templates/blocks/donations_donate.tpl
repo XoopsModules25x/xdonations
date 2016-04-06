@@ -1,4 +1,4 @@
-<!-- $Id: donations_donate.html,v 1.8 2004/10/15 17:58:57 blackdeath_csmc Exp $ -->
+<!-- 
 <form action="https://<{$block.paypal_url}>/cgi-bin/webscr"
 target="paypal" method="post"> <{$block.lang_select}><br />
 <select name="amount">

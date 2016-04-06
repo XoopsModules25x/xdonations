@@ -1,4 +1,4 @@
-<!-- $Id: donations_main.html,v 1.7 2004/10/15 17:58:57 blackdeath_csmc Exp $ -->
+<!-- 
 <table style="width: 100%;">
     <tr style="vertical-align: top;">
         <td style="width: 73%;">

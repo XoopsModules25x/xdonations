@@ -1,4 +1,4 @@
-<!-- $Id: donations_donatometer.html,v 1.5 2004/10/15 17:58:57 blackdeath_csmc Exp $ -->
+<!-- 
 <table
     style="border-width: 0px; padding: 0px; margin: 0px; width: 100%; font-size: smaller;">
     <tr>
