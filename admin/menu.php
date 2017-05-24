@@ -1,9 +1,9 @@
 <?php
 /************************************************************************/
 /* Donations - Paypal financial management module for Xoops 2           */
-/* Copyright (c) 2004 by Xoops2 Donations Module Dev Team			    */
-/* http://dev.xoops.org/modules/xfmod/project/?group_id=1060			*/
-/* $Id: menu.php 8588 2011-12-27 15:18:48Z beckmi $      */
+/* Copyright (c) 2016 XOOPS Project                                     */
+/* http://dev.xoops.org/modules/xfmod/project/?group_id=1060            */
+/* 
 /************************************************************************/
 /*                                                                      */
 /* Based on NukeTreasury for PHP-Nuke - by Dave Lawrence AKA Thrash     */
@@ -29,47 +29,51 @@
 /* USA                                                                  */
 /************************************************************************/
 
-defined("XOOPS_ROOT_PATH") or die("XOOPS root path not defined");
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
-$dirname = basename(dirname(dirname(__FILE__)));
-$module_handler = xoops_gethandler('module');
-$module = $module_handler->getByDirname($dirname);
-$pathIcon32 = $module->getInfo('icons32');
+$dirname        = basename(dirname(__DIR__));
+$module_handler = xoops_getHandler('module');
+$module         = $module_handler->getByDirname($dirname);
+$pathIcon32     = $module->getInfo('icons32');
 
 xoops_loadLanguage('admin', $dirname);
- 
+
 $adminmenu = array();
 
-$i = 1;
-$adminmenu[$i]['title'] = _MI_DON_MENU_00 ;
-$adminmenu[$i]['link']  = 'admin/index.php' ;
-$adminmenu[$i]['icon']  = $pathIcon32.'/home.png' ;
-$i++;
+$i                      = 1;
+$adminmenu[$i]['title'] = _MI_DON_MENU_00;
+$adminmenu[$i]['link']  = 'admin/index.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/home.png';
+++$i;
 
-$adminmenu[$i] = array ('title'      => _MI_DON_TREASURY_F_REGISTER,
-                        'link'       => "admin/donations.php?op=Treasury",
-                        'icon'       =>$pathIcon32.'/calculator.png', // or business.png
-                        );
+$adminmenu[$i] = array(
+    'title' => _MI_DON_TREASURY_F_REGISTER,
+    'link'  => 'admin/donations.php?op=Treasury',
+    'icon'  => $pathIcon32 . '/calculator.png', // or business.png
+);
 
-                        $i++;
-                        $adminmenu[$i] = array ('title'      => _MI_DON_SHOW_LOG,
-                        'link'       => "admin/donations.php?op=ShowLog",
-                        'icon'       =>$pathIcon32.'/view_text.png',
-                        );
+++$i;
+$adminmenu[$i] = array(
+    'title' => _MI_DON_SHOW_LOG,
+    'link'  => 'admin/donations.php?op=ShowLog',
+    'icon'  => $pathIcon32 . '/view_text.png'
+);
 
-                        $i++;
-                        $adminmenu[$i] = array ('title'      => _MI_DON_SHOW_TXN,
-                        'link'       => "admin/transaction.php",
-                        'icon'       =>$pathIcon32.'/view_detailed.png',
-                        );
+++$i;
+$adminmenu[$i] = array(
+    'title' => _MI_DON_SHOW_TXN,
+    'link'  => 'admin/transaction.php',
+    'icon'  => $pathIcon32 . '/view_detailed.png'
+);
 
-                        $i++;
-                        $adminmenu[$i] = array ('title'      => _MI_DON_CONFIGURATION,
-                        'link'       => "admin/donations.php?op=Config",
-                        'icon'       =>$pathIcon32.'/administration.png',
-                        );
-                        
-                        $i++;
-$adminmenu[$i]["title"] = _MI_DON_ADMIN_ABOUT;
-$adminmenu[$i]["link"] = 'admin/about.php';
-$adminmenu[$i]["icon"] = $pathIcon32.'/about.png';
+++$i;
+$adminmenu[$i] = array(
+    'title' => _MI_DON_CONFIGURATION,
+    'link'  => 'admin/donations.php?op=Config',
+    'icon'  => $pathIcon32 . '/administration.png'
+);
+
+++$i;
+$adminmenu[$i]['title'] = _MI_DON_ADMIN_ABOUT;
+$adminmenu[$i]['link']  = 'admin/about.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/about.png';

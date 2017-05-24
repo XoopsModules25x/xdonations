@@ -1,8 +1,8 @@
 /************************************************************************/
 /* xDonations - Paypal financial management module for Xoops 2          */
-/* Copyright (c) 2004 by Xoops2 Donations Module Dev Team               */
+/* Copyright (c) 2016 XOOPS Project                                     */
 /* http://dev.xoops.org/modules/xfmod/project/?group_id=1060            */
-/* $Id: INSTALL.txt,v 1.7 2004/11/04 15:32:50 blackdeath_csmc Exp $     */
+/* 
 /************************************************************************/
 /*                                                                      */
 /* Based on NukeTreasury for PHP-Nuke - by Dave Lawrence AKA Thrash     */
@@ -167,9 +167,9 @@ Changelog
 
 -- Modification du module pour supporter les traductions, dans le panneau d'administration et dans les javascript.
 
--- The language traduce is set to the admin panel and the javascript (fait par J캨캝 : jjd@kiolo.com).
+-- The language traduce is set to the admin panel and the javascript (fait par J째J째D : jjd@kiolo.com).
 -- Correction of javascript bugs ans replacement of "HTTP_GET_VARS"
-   and "HTTP_POST_VARS" by "_GET" et "_POST" in "admin/index.php.  (fait par J캨캝 : jjd@kiolo.com)
+   and "HTTP_POST_VARS" by "_GET" et "_POST" in "admin/index.php.  (fait par J째J째D : jjd@kiolo.com)
 
 *******************************************************************************
 From The Team

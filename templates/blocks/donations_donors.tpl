@@ -1,4 +1,4 @@
-<!-- $Id: donations_donors.html,v 1.4 2004/10/15 17:58:57 blackdeath_csmc Exp $ -->
+<!-- 
 <table class="outer" style="width: 100%;">
     <tr class="head">
         <td style="text-align: left;"><{$block.name}></td>

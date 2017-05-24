@@ -1,9 +1,9 @@
 <?php
 /************************************************************************/
 /* Donations - Paypal financial management module for Xoops 2           */
-/* Copyright (c) 2004 by Xoops2 Donations Module Dev Team			    */
-/* http://dev.xoops.org/modules/xfmod/project/?group_id=1060			*/
-/* $Id: footer.php 8193 2011-11-07 02:42:53Z beckmi $      */
+/* Copyright (c) 2016 XOOPS Project                                     */
+/* http://dev.xoops.org/modules/xfmod/project/?group_id=1060            */
+/* 
 /************************************************************************/
 /*                                                                      */
 /* Based on NukeTreasury for PHP-Nuke - by Dave Lawrence AKA Thrash     */
@@ -29,4 +29,4 @@
 /* USA                                                                  */
 /************************************************************************/
 
-include_once "../../footer.php";
+include_once dirname(dirname(__DIR__)) . '/footer.php';

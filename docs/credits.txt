@@ -1,8 +1,5 @@
-//  ----------------------------------------------------------- //
-//                         mylinks-w 3.0    	 	            //
-//                    Just enjoy! Internet for everyone!!	    //
-//                      wanikoo <http://www.wanisys.net/>       //
-//  ----------------------------------------------------------- //
-//                Original Module: mylinks 1.10                 //
-//             The XOOPS Project ( http://www.xoops.org/ )      //
-//  ----------------------------------------------------------- //
+/* Based on NukeTreasury for PHP-Nuke - by Dave Lawrence AKA Thrash     */
+/* NukeTreasury - Financial management for PHP-Nuke                     */
+/* Copyright (c) 2004 by Dave Lawrence AKA Thrash                       */
+/*                       thrash@fragnastika.com                         */
+/*                       thrashn8r@hotmail.com

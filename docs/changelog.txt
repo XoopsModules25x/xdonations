@@ -1,24 +1,33 @@
-  ver 1.97
+2.00 Beta 1       2016-04-05
+=====================================================================
+- moved all images, CSS, and JS files to /assets (mamba)
+- renamed .html Smarty templates to .tpl (mamba)
+- removed @version (mamba)
+- single quotes (mamba)
+- XOOPS 2.5.8 and PHP 7 (mamba)
+- PSR-2 adjustments (mamba)
 
-  RC
-  =====================================================================
-  - updated to ModuleAdmin Class 1.1 (mamba)  
-  - updated table in "Treasury Register" to standard GUI, with actions on the right side (mamba) 
 
-  BETA  
-  =================================
+
+1.97  RC
+ =====================================================================
+  - updated to ModuleAdmin Class 1.1 (mamba)
+  - updated table in "Treasury Register" to standard GUI, with actions on the right side (mamba)
+
+1.97  BETA
+=====================================================================
 - added new Admin Menu Class (Mage, mamba)
 - updated GUI to XOOPS Standard  (mamba)
 - updated currencies accepted to match PAYPAL
 
-  ver 1.96
-  FINAL
-  =====================================================================
+
+1.96  FINAL
+=====================================================================
   - updated INSTALL.TXT information
   - removed BETA.TXT file
 
-  BETA 2
-  =====================================================================
+1.96  BETA 2
+=====================================================================
   - fixed english language typo in _AD_DON_USERNAME_REQUEST_NO constant
   - fixed 'donators' to 'donors' in _AD_DON_PP_GROUP & _AD_DON_PP_RANK
   - added _AD_DON_T_don_forceadd_ & _AD_DON_V_don_forceadd_ constants
@@ -33,8 +42,8 @@
   - added eval for install function to allow module to be relocatable
   - New file added - ./include/onupdate.php
 
-  BETA 1
-  =====================================================================
+1.96  BETA 1
+=====================================================================
   - reverted to use XOOPS common.php in XOOPS 2.4.5 instead of using a
     'custom' ./include/common.php - removed file
   - Added additional language constants to improve translation
@@ -55,6 +64,7 @@
   - Changed mysql queries in various places to reduce number of db calls
 
 - Previous versions
+=====================================================================
   - Added language constants to all files to allow for alternate languages
   - Added constant definitions to languages/english/main.php
   - Fixed IPN Debug mode
@@ -72,6 +82,6 @@
 
 -- Modification du module pour supporter les traductions, dans le panneau d'administration et dans les javascript.
 
--- The language traduce is set to the admin panel and the javascript (fait par J°J°D : jjd@kiolo.com).
+-- The language traduce is set to the admin panel and the javascript (fait par JJD : jjd@kiolo.com).
 -- Correction of javascript bugs ans replacement of "HTTP_GET_VARS"
-   and "HTTP_POST_VARS" by "_GET" et "_POST" in "admin/index.php.  (fait par J°J°D : jjd@kiolo.com)
+   and "HTTP_POST_VARS" by "_GET" et "_POST" in "admin/index.php.  (fait par JJD : jjd@kiolo.com)
